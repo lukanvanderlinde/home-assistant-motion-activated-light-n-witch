@@ -6,7 +6,7 @@ blueprint:
   author: Lukan Vanderlinde
   
   input:
-    motion_entity:
+    motion_sensor:
       name: Motion Sensor
       description: Choose the motion sensor that will activate the automation.
       selector:
