@@ -57,9 +57,6 @@ trigger:
   from: "off"
   to: "on"
 
-condition:
-- '{{  }}'
-
 action:
   - alias: "Turn on"
     service: >-
