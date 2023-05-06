@@ -26,7 +26,8 @@ blueprint:
       name: Working time
       description: Toggle this if you wish to set a fix time period for the automation
       selector:
-        boolean: false
+        boolean:
+      default: false
 
     after:
       name: Start
