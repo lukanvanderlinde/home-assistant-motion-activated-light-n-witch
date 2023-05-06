@@ -27,23 +27,17 @@ blueprint:
       description: Toggle this if you wish to set a fix time period for the automation
       boolean: false
 
-    condition: template
-      value_template:
-        {% if '!input toggle_time' %}
-    
-        after:
-          name: Start
-          description: The automation will only start after this time of the day
-          selector:
-            time:
+    after:
+      name: Start
+      description: The automation will only start after this time of the day
+      selector:
+        time:
 
-        before:
-          name: Stop
-          description: And stop at this time of the day
-          selector:
-            time:
-
-        {% endif %}
+    before:
+      name: Stop
+      description: And stop at this time of the day
+      selector:
+        time:
     
     no_motion_wait:
       name: Wait time
