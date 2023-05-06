@@ -4,19 +4,41 @@ blueprint:
   domain: automation
   source_url: https://github.com/lukanvanderlinde/home-assistant-motion-switch/edit/main/blueprint.yaml
   author: Lukan Vanderlinde
+  
   input:
     motion_entity:
       name: Motion Sensor
+      description: Choose the motion sensor that will activate the automation.
       selector:
         entity:
           domain: binary_sensor
           device_class: motion
-    light_target:
-      name: Light
+    
+    target_entity:
+      name: Light or switch
+      description: Choose the lights or switches that will be activated by the motion sensor.
       selector:
         target:
           entity:
-            domain: switch
+            domain: [switch, light]
+    
+    toggle_time:
+      name: Working time
+      description: Toggle this if you wish to set a fix time period for the automation
+      boolean: false
+    
+    {% if '!input toggle_time' %}
+    
+    after:
+      name: Start
+      description: The automation will only start after this time of the day
+
+    before:
+      name: Stop
+      description: And stop at this time of the day
+    
+    {% endif %}
+    
     no_motion_wait:
       name: Wait time
       description: Time to leave the light on after last motion is detected.
