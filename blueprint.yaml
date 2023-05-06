@@ -63,11 +63,11 @@ condition:
 action:
   - alias: "Turn on"
     service: >-
-    '{% if !input target_entity.device_class == "switch" }}'
-    switch.turn_on
-    '{% else %}'
-    light.turn_on
-    '{% endif %}'
+      '{% if !input target_entity.device_class == "switch" }}'
+      switch.turn_on
+      '{% else %}'
+      light.turn_on
+      '{% endif %}'
     target: !input target_entity
   - alias: "Wait until there is no motion from device"
     wait_for_trigger:
@@ -79,9 +79,9 @@ action:
     delay: !input no_motion_wait
   - alias: "Turn off"
     service: >-
-    '{% if !input target_entity.device_class == "switch" }}'
-    switch.turn_off
-    '{% else %}'
-    light.turn_off
-    '{% endif %}'
+      '{% if !input target_entity.device_class == "switch" }}'
+      switch.turn_off
+      '{% else %}'
+      light.turn_off
+      '{% endif %}'
     target: !input target_entity
