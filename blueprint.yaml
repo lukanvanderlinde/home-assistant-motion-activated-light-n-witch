@@ -60,7 +60,7 @@ trigger:
 action:
   - alias: "Turn on"
     service: >-
-      '{% if !input target_entity | selectattr("attributes.device_class", "switch") }}'
+      '{% if !input target_entity | selectattr("attributes.device_class", "equalto", "switch") }}'
       switch.turn_on
       '{% else %}'
       light.turn_on
@@ -76,7 +76,7 @@ action:
     delay: !input no_motion_wait
   - alias: "Turn off"
     service: >-
-      '{% if !input target_entity | selectattr("attributes.device_class", "switch") }}'
+      '{% if !input target_entity | selectattr("attributes.device_class", "equalto", "switch") }}'
       switch.turn_off
       '{% else %}'
       light.turn_off
