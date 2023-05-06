@@ -22,28 +22,23 @@ blueprint:
           entity:
             domain: [switch, light]
 
-    toggle_time:
-      name: Working time
-      description: Toggle this if you wish to set a fix time period for the automation
-      default: false
-      selector:
-        boolean: {}
-
     after:
       name: Start
-      description: The automation will only start after this time of the day
+      description: The automation will only start after this time of the day. Leave empty to ignore.
+      default: {}
       selector:
         time: {}
 
     before:
       name: Stop
       description: And stop at this time of the day
+      default: {}
       selector:
         time: {}
 
     no_motion_wait:
       name: Wait time
-      description: Time to leave the light on after last motion is detected.
+      description: Time to leave the light on after last motion is detected. Leave empty to ignore.
       default: 120
       selector:
         number:
@@ -63,8 +58,8 @@ trigger:
   to: "on"
 
 action:
-  - alias: "Turn on the light"
-    service: switch.turn_on
+  - alias: "Turn on"
+    service: switch.turn_on #choose service
     target: !input target_entity
   - alias: "Wait until there is no motion from device"
     wait_for_trigger:
@@ -74,6 +69,6 @@ action:
       to: "off"
   - alias: "Wait the number of seconds that has been set"
     delay: !input no_motion_wait
-  - alias: "Turn off the light"
-    service: switch.turn_off
+  - alias: "Turn off"
+    service: switch.turn_off #choose service
     target: !input target_entity
