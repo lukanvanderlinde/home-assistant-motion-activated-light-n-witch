@@ -58,22 +58,22 @@ max_exceeded: silent
 
 trigger:
   platform: state
-  entity_id: !input motion_entity
+  entity_id: !input motion_sensor
   from: "off"
   to: "on"
 
 action:
   - alias: "Turn on the light"
     service: switch.turn_on
-    target: !input light_target
+    target: !input target_entity
   - alias: "Wait until there is no motion from device"
     wait_for_trigger:
       platform: state
-      entity_id: !input motion_entity
+      entity_id: !input motion_sensor
       from: "on"
       to: "off"
   - alias: "Wait the number of seconds that has been set"
     delay: !input no_motion_wait
   - alias: "Turn off the light"
     service: switch.turn_off
-    target: !input light_target
+    target: !input target_entity
