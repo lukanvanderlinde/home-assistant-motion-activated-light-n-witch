@@ -62,7 +62,7 @@ condition:
 
 action:
   - alias: "Turn on"
-    service: >-
+    service:
       '{% if !input target_entity.device_class == "switch" }}'
       switch.turn_on
       '{% else %}'
@@ -78,7 +78,7 @@ action:
   - alias: "Wait the number of seconds that has been set"
     delay: !input no_motion_wait
   - alias: "Turn off"
-    service: >-
+    service:
       '{% if !input target_entity.device_class == "switch" }}'
       switch.turn_off
       '{% else %}'
