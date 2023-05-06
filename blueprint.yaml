@@ -25,14 +25,14 @@ blueprint:
     after:
       name: Start
       description: The automation will only start after this time of the day. Leave empty to ignore.
-      default: {}
+      default: 0
       selector:
         time: {}
 
     before:
       name: Stop
       description: And stop at this time of the day
-      default: {}
+      default: 0
       selector:
         time: {}
 
